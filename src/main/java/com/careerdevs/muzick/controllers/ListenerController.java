@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.careerdevs.muzick.models.Listener;
 import com.careerdevs.muzick.repositories.ListenerRepo;
 
-import antlr.collections.List;
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api/listeners")
