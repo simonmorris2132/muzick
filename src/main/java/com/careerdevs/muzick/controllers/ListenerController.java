@@ -28,6 +28,7 @@ public class ListenerController {
     @PostMapping("/")
     public ResponseEntity<?> createListener(@RequestBody Listener newListener) {
         Listener listener = repo.save(newListener);
+        
         return new ResponseEntity<>(listener, HttpStatus.CREATED);
     }
 
