@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.careerdevs.muzick.models.Listener;
 import com.careerdevs.muzick.repositories.ListenerRepo;
 
+import antlr.collections.List;
+
 @CrossOrigin
 @RestController
 @RequestMapping("/api/listeners")
@@ -28,8 +30,15 @@ public class ListenerController {
     @PostMapping("/")
     public ResponseEntity<?> createListener(@RequestBody Listener newListener) {
         Listener listener = repo.save(newListener);
-        
+
         return new ResponseEntity<>(listener, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<?> getAllListeners() {
+        java.util.List<Listener> listeners = repo.findAll(); 
+
+        return new ResponseEntity<>(listeners, HttpStatus.OK);
     }
 
 }
