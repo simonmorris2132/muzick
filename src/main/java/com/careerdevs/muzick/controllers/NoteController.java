@@ -1,5 +1,7 @@
 package com.careerdevs.muzick.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,9 +37,7 @@ public class NoteController {
 
     @PostMapping("/{listenerId}")
     public ResponseEntity<?> createNote(@PathVariable Long listenerId, @RequestBody Note newNote) {
-        Listener listener = listenerRepo.findById(listenerId).orElseThrow(
-            () -> new ResponseStatusException(HttpStatus.NOT_FOUND)
-        );
+        Listener listener = listenerRepo.findById(listenerId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         newNote.setListener(listener);
 
@@ -46,6 +46,22 @@ public class NoteController {
 
     }
 
-    
+    @GetMapping("/")
+    public ResponseEntity<List<Note>> getAllNotes() {
+        List<Note> notes = noteRepo.findAll();
+        return new ResponseEntity<>(notes, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Note> getNoteByID(@PathVariable Long id) {
+        Note note = noteRepo.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return new ResponseEntity<>(note, HttpStatus.OK);
+    }
+
+    @GetMapping("/listener/{listenerId}")
+    public ResponseEntity<List<Note>> getNotesByListener(@PathVariable Long listenerId) {
+        List<Note> notes = noteRepo.findAllByListener_id(listenerId);
+        return new ResponseEntity<>(notes, HttpStatus.OK);
+    }
 
 }
