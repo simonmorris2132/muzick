@@ -30,7 +30,7 @@ public class NewsController {
 
     @GetMapping("/news")
     public ResponseEntity<?> getMusicArticle() {
-        String url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey;
+        String url = "https://newsapi.org/v2/everything?apiKey=" + apiKey + "&q=music";
 
         NewsAPI response = restTemplate.getForObject(url, NewsAPI.class);
 
