@@ -28,10 +28,9 @@ public class NewsController {
         return new ResponseEntity<>("Body", HttpStatus.OK);
     }
 
-    @GetMapping("/")
+    @GetMapping("/news")
     public ResponseEntity<?> getMusicArticle() {
-
-        String url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey + "&q=music";
+        String url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey;
 
         NewsAPI response = restTemplate.getForObject(url, NewsAPI.class);
 
