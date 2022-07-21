@@ -29,7 +29,7 @@ public class NewsController {
     
     @GetMapping("/test")
     public ResponseEntity<String> testRoute() {
-        return new ResponseEntity<>("Body", HttpStatus.OK);
+        return new ResponseEntity<>("Test", HttpStatus.OK);
     }
 
     @GetMapping("/news")
