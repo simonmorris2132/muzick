@@ -32,7 +32,7 @@ public class NewsController {
         return new ResponseEntity<>("Test", HttpStatus.OK);
     }
 
-    @GetMapping("/news")
+    @GetMapping("/")
     public ResponseEntity<?> getMusicArticle() {
         String url = "https://newsapi.org/v2/everything?apiKey=" + apiKey + "&q=music";
 
