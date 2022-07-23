@@ -1,5 +1,7 @@
 package com.careerdevs.muzick.payloads;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Article {
     
     private class Source {
@@ -29,6 +31,7 @@ public class Article {
     private String urlToImage;
     private String description;
     private String url;
+    private String likes;
 
     public Article() {
     }
@@ -40,6 +43,7 @@ public class Article {
         this.urlToImage = urlToImage;
         this.description = description;
         this.url = url;
+        this.likes = likes;
     }
 
     public Source getSource() {
@@ -90,8 +94,17 @@ public class Article {
         this.url = url;
     }
 
+    @JsonIgnore
     public String getSourceName() {
         return source.name;
+    }
+
+    public String getLikes() {
+        return this.likes;
+    }
+
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 
 }
