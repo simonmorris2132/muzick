@@ -40,7 +40,8 @@ public class NewsController {
 
         for (Article article : response.getArticles()) {
             if (article.getSourceName().equals("Wired")) {
-                articleList.add(article);
+                article.setLikes("Hi");
+                /* articleList.add(article); */
             }
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
